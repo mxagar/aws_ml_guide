@@ -15,3 +15,5 @@ It is a project-based course, consisting of the following sections:
 
 I would have forked the repository of the course material, but I have found only a download link which delivers the presentations, the notebooks and the required datasets. All that material can be found in `./udemy_aws`, but the folder is not committed.
 
+Mikel Sagardia, 2022.
+No warranties.
