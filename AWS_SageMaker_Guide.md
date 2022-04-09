@@ -130,7 +130,7 @@ We assign a tier to a bucket and we can change the tier in time.
 
 #### Creating a Bucket
 
-AWS Dashboard > Services > (Storage) S3 > Create Bucket
+AWS Dashboard / Management Console > Services > (Storage) S3 > Create Bucket
 
 - Bucket name (unique id): `sagemaker-practical-mikel`
 - AWS Region: select one, e.g. `eu-west-3` or `us-east-1`
@@ -199,3 +199,39 @@ The course introduces 4 models of pricing (business):
 
 ### 1.7 Amazon IAM: Identity and Access Management
 
+Independently of region and tier, we can create user groups and manage their permissions.
+
+By default, we access with our `root account`, which has all permissions, but we should avoid that: instead, we create IAM users immediately and work with them; the `root account` should be used only for minor management tasks.
+
+Imagine that somebody steals your root account and they start mining bitcoin!
+
+### 1.8 Amazon SageMaker
+
+With SageMaker we can control the complete machine learning pipeline in one place: from data collection to model deployment and scaling. We have even a marketplace where we can get trained models.
+
+![AWS SageMaker Pipeline](./pics/aws_sagemaker_pipeline.png)
+
+AWS shows these steps when opening the SageMaker service:
+
+- Labelling: we can label using active learning or we can have humans label data! (Amazon Turk)
+- Build: we can design our models in notebooks using the algorithms available at AWS SageMaker
+- Train and hyperparameter fine-tuning
+- Deploy and perform Inferences
+- We can discover available models in a marketplace
+
+![AWS SageMaker Steps](./pics/aws_sagemaker_steps.png)
+
+
+#### Walkthrough
+
+AWS Dashboard / Management Console > Services > (Machine Learning) SageMaker.
+On the left panel (Images):
+- Ground Truth: we can create labelling jobs (e.g., with Amazon Turk)
+  - When we press **crate labelling job**, we can 
+- Notebook instances (there are templates)
+- Training (including hyperparameter tuning)
+- Inference
+- ...
+- AWS Marketplace: we can even buy a readily available model!
+
+![SageMaker: Labelling Job](./pics/aws_sagemaker_labelling_job.png)
