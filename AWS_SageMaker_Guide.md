@@ -222,16 +222,60 @@ AWS shows these steps when opening the SageMaker service:
 ![AWS SageMaker Steps](./pics/aws_sagemaker_steps.png)
 
 
-#### Walkthrough
+#### Walkthrough of AWS SageMaker
 
 AWS Dashboard / Management Console > Services > (Machine Learning) SageMaker.
 On the left panel (Images):
 - Ground Truth: we can create labelling jobs (e.g., with Amazon Turk)
-  - When we press **crate labelling job**, we can 
+  - When we press **crate labelling job**, we can select the type of data that needs to be labelled: image, text, video
+  - Each type has its own properties; e.g., for images: classification, object detection, segmentation, etc.
 - Notebook instances (there are templates)
+  - Jupyter environment is opened and we can upload / create notebooks
+  - There are templates available: SageMake Examples tab
 - Training (including hyperparameter tuning)
+  - We can select algorithms
+  - Select where to dump the artifacts
+  - We see all our jobs
 - Inference
-- ...
+  - We can create endpoints from which we use the model
+- Augmented AI: human reviews
 - AWS Marketplace: we can even buy a readily available model!
 
 ![SageMaker: Labelling Job](./pics/aws_sagemaker_labelling_job.png)
+
+### 1.9 Amazon SageMaker Studio
+
+AWS SageMaker Studio Overview is a fully integrated IDE. Instead of using the functionalities mentioned before in different instances, we have everything in an IDE similar to R Studio which integrates everything.
+
+Everything can be done in there.
+
+Among others, we can
+- Create and work on notebooks
+- Create experiments that try different models
+- Deploy models
+- etc.
+
+Note that 
+
+- The models and all the artifacts product of the training are stored in S3 buckets.
+- Additionally, training code is stored in container images, which are collected in the Elastic Container Registry.
+- The datasets need to be in Amazon S3 buckets, too.
+
+Training options offered by SageMaker:
+
+![AWS SageMaker Training Options Available](./pics/aws_sagemaker_training_options.png)
+
+Deployment options by SageMaker:
+
+![AWS SageMaker Daployment Options Available](./pics/aws_sagemaker_deployment_options.png)
+
+## 2. Project 1: Employee Salary Predictions Using AWS SageMaker Linear Learner
+
+Super simple example to see how the complete pipeline on SageMaker works:
+- Dataset: `./data/salary.csv`: x = years of experience; y = salary.
+- Model: linear regression.
+
+The **linear learner** model is used, which can perform
+- linear regression
+- binary/multi-class logistic regression for classification
+
