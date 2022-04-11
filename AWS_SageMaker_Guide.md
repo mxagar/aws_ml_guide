@@ -271,6 +271,8 @@ Deployment options by SageMaker:
 
 ## 2. Project 1: Employee Salary Predictions Using AWS SageMaker Linear Learner
 
+### 2.1 Introduction
+
 Super simple example to see how the complete pipeline on SageMaker works:
 - Dataset: `./data/salary.csv`: x = years of experience; y = salary.
 - Model: linear regression.
@@ -279,3 +281,47 @@ The **linear learner** model is used, which can perform
 - linear regression
 - binary/multi-class logistic regression for classification
 
+Some notes on how to use the linear learning:
+
+- Data needs to shuffled before training.
+- Data needs to be normalized.
+- Hyperparameters to be selected [linear learner hyperparameters](https://docs.aws.amazon.com/sagemaker/latest/dg/ll_hyperparameters.html):
+  - Learning rate
+  - Feature dimension
+  - Number of classes
+  - Predictor type: regression / binary classification / multi-classification
+  - Regularization parameter (L1 / L2: wd = weight decay)
+  - Mini-batch size
+  - Epochs
+  - Loss type
+  - Number of models: Multiple models can be trained in parallel!
+  - Optimizer: SGD, Adam (default), RMSProp, ...
+  - ...
+- Validation split used to evaluate the model; metrics, for instance:
+  - Regression: MSE
+  - Classification: F1
+
+Supported I/O formats:
+
+- RecordIO protobuf (only Float32 tensors)
+- Text/CSV; but first column must be the target!
+- Files or pipes (?)
+
+Which EC2 instances should we use?
+
+- For training, we can use CPU or GPU-based instances
+- For testing, use CPU instances (cheaper and same results)
+
+### 2.2 AWS SegeMaker Notebook Creation
+
+Usually, we'll work with AWS SageMaker Studio; however, we learn how to instantiate and work with single notebook workspaces, too.
+
+Left panel > Notebook > Notebook Instances > Create Notebook
+
+- Notebook instance name: `employee-salary-linear`
+- Notebook instance type: `ml.t2.medium`: we can choose a more powerful one if we'd like to pay
+- Elastic inference: we can attach a low cost GPU to accelerate the job; we can leave it `none`.
+- Create/choose IAM role: give access to all buckets
+- Give/Enable root access to notebook.
+- We can ignore the rest
+- CReate the notebook.
